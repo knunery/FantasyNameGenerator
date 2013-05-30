@@ -1,0 +1,4 @@
+﻿Male Warrior Names
+
+names[0] = Male Sole Dreadbite the Valiant of Broken Hills
+names[1] = Male Sole Dreadbite the Valiant of Broken Hills

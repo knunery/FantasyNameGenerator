@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPGKit.FantasyNameGenerator", "RPGKit.FantasyNameGenerator\RPGKit.FantasyNameGenerator.csproj", "{76C08384-8930-475B-8DA4-B9EE1D3C58A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPGKit.FantasyNameGenerator.Tests", "RPGKit.FantasyNameGenerator.Tests\RPGKit.FantasyNameGenerator.Tests.csproj", "{D8CAE8B4-DA33-4718-9B32-8FF7EED2D416}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76C08384-8930-475B-8DA4-B9EE1D3C58A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76C08384-8930-475B-8DA4-B9EE1D3C58A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76C08384-8930-475B-8DA4-B9EE1D3C58A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76C08384-8930-475B-8DA4-B9EE1D3C58A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8CAE8B4-DA33-4718-9B32-8FF7EED2D416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8CAE8B4-DA33-4718-9B32-8FF7EED2D416}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8CAE8B4-DA33-4718-9B32-8FF7EED2D416}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8CAE8B4-DA33-4718-9B32-8FF7EED2D416}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

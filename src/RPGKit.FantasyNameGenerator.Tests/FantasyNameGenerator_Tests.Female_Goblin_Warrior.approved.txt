@@ -1,0 +1,4 @@
+﻿Female Goblin Names
+
+names[0] = Female Solea Dreadbite the Crazed of Broken Hills
+names[1] = Female Solea Dreadbite the Crazed of Broken Hills
