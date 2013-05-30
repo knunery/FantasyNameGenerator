@@ -1,6 +1,6 @@
 ![RPGKit - FantasyNameGenerator](https://raw.github.com/knunery/FantasyNameGenerator/master/rpgkit.jpg)
 
-FantasyNameGenerator
+RPG Kit - Fantasy Name Generator
 ====================
 
 A random name generator for fantasy characters.  This very same code is used in the iPhone and Windows Phone application called RPG Kit.
