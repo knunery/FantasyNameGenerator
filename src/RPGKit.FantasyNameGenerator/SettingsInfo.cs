@@ -1,4 +1,5 @@
 ﻿using RPGKit.FantasyNameGenerator;
+using RPGKit.FantasyNameGenerator.Generators;
 
 public class SettingsInfo
 {

@@ -1,8 +1,5 @@
-using System;
-
 namespace RPGKit.FantasyNameGenerator
 {
-
 	public class MaleRogueFirstNameGenerator : NameGenerator, INameGenerator
 	{
 		public static string[] Rogue_FirstNames = new string[] { "Slinter", "Despar", "Trixster", "Rostor", "Grasdo", "Rendar", "Sole", "Pington", "Glodstar", "Denton","Slipert", "Mistrewn", "Liard" };

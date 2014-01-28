@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using RPGKit.FantasyNameGenerator.Generators;
 
 namespace RPGKit.FantasyNameGenerator
 {

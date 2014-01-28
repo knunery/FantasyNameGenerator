@@ -43,6 +43,7 @@
     <Compile Include="Generators\CompositeGenerator.cs" />
     <Compile Include="FantasyName.cs" />
     <Compile Include="Generators\FemaleWrapperNameGenerator.cs" />
+    <Compile Include="Generators\GenderEnum.cs" />
     <Compile Include="Generators\INameFactory.cs" />
     <Compile Include="Generators\INameGenerator.cs" />
     <Compile Include="Generators\LandGenerator.cs" />

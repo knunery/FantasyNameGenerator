@@ -1,13 +1,8 @@
 using System;
+using RPGKit.FantasyNameGenerator.Generators;
 
 namespace RPGKit.FantasyNameGenerator
 {
-    public enum GenderEnum
-    {
-        Male,
-        Female
-    }
-
     public class FantasyName
 	{
         public GenderEnum Gender { get; set; }

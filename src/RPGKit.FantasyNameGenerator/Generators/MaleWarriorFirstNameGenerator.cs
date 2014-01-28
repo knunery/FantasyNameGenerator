@@ -1,5 +1,3 @@
-using System;
-
 namespace RPGKit.FantasyNameGenerator
 {
 	public class MaleWarriorFirstNameGenerator : NameGenerator, INameGenerator

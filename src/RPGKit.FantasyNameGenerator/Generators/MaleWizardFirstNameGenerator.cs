@@ -1,10 +1,5 @@
-
-using System;
-
 namespace RPGKit.FantasyNameGenerator
 {
-
-
 	public class MaleWizardFirstNameGenerator : NameGenerator, INameGenerator
 	{
 		public static string[] Wizard_FirstNames = new string[] { "Voltar", "Vultrax", "Frizban", "Rasputin", "Rostor", "Simonexto", "Guurglex" };

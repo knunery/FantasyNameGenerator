@@ -1,4 +1,5 @@
 using System;
+using RPGKit.FantasyNameGenerator.Generators;
 
 namespace RPGKit.FantasyNameGenerator
 {
