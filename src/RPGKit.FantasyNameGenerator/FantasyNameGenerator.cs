@@ -11,15 +11,6 @@ namespace RPGKit.FantasyNameGenerator
 		public bool IncludePostfix { get; set; }
 		public bool IncludeLands { get; set; }
         public Gender Gender { get; set; }
-
-		private FantasyNameGenerator ()
-		{
-			ChosenClass = Classes.Warrior;
-			ChosenRace = Race.None;
-			IncludePostfix = true;
-			IncludeLands = true;
-            Gender = Gender.Male;
-		}
 		
 		private FantasyNameGenerator(SettingsInfo settingsInfo)
 		{
