@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FantasyNameGenerator_Tests.Female_Goblin_Warrior.approved.txt" />
+    <Content Include="FantasyNameGenerator_Tests.Female_Warrior.approved.txt" />
     <Content Include="FantasyNameGenerator_Tests.Male_Warrior.approved.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

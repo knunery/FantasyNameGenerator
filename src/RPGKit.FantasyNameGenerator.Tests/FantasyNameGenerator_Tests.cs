@@ -23,6 +23,21 @@ namespace RPGKit.FantasyNameGenerator.Tests
 
         [Test]
         [UseReporter(typeof(DiffReporter))]
+        public void Female_Warrior()
+        {
+            // arrange
+            NameGenerator.GetRandomNumber = (maxValue) => 0;
+            IFantasyNameGenerator fantasyNameGenerator = FantasyNameGenerator.FromSettingsInfo(new SettingsInfo(Classes.Warrior, Race.None, true, true, Gender.Female));
+
+            // act
+            var names = fantasyNameGenerator.GetFantasyNames(1);
+
+            // assert
+            ApprovalTests.Approvals.VerifyAll("Female Warrior Names", names, "names");
+        }
+
+        [Test]
+        [UseReporter(typeof(DiffReporter))]
         public void Female_Goblin_Warrior()
         {
             // arrange

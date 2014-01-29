@@ -1,105 +1,124 @@
 using System;
+using System.Collections.Generic;
 using RPGKit.FantasyNameGenerator.Generators;
 
 namespace RPGKit.FantasyNameGenerator
 {
-	public class FantasyNameGenerator : IFantasyNameGenerator
-	{	
-		public Classes ChosenClass { get; set; }
-		public Race ChosenRace { get; set; }
-		public bool IncludePrefix { get; set; }
-		public bool IncludePostfix { get; set; }
-		public bool IncludeLands { get; set; }
+    public class FantasyNameGenerator : IFantasyNameGenerator
+    {
+        private readonly List<INameGenerator> _nameGenerators;
+
         public Gender Gender { get; set; }
-		
-		private FantasyNameGenerator(SettingsInfo settingsInfo)
-		{
-			ChosenClass = settingsInfo.ChosenClass;
-			ChosenRace = settingsInfo.ChosenRace;
-			IncludeLands = settingsInfo.IncludeHomeland;
-			IncludePostfix = settingsInfo.IncludePostfix;
-		    Gender = settingsInfo.Gender;
-		}
+        public INameGenerator PrefixGenerator { get; set; }
+        public INameGenerator FirstNameGenerator { get; set; }
+        public INameGenerator LastNameGenerator { get; set; }
+        public INameGenerator PostfixNameGenerator { get; set; }
+        public INameGenerator LandNameGenerator { get; set; }
 
-	    public FantasyName GetFantasyName()
-	    {
-	        return GetFantasyNames(1)[0];
-	    }
+        public FantasyName GetFantasyName()
+        {
+            FantasyName name = new FantasyName();
 
-	    public FantasyName[] GetFantasyNames(int numNames)
-		{
-			if (numNames < 0)
-				throw new ArgumentException(string.Format("Number of fantasy names cannot be negative. [{0}",numNames));
+            name.Gender = Gender;
 
-			CompositeNameGenerator compositeNameGenerator = new CompositeNameGenerator(false);
-			
+            if (PrefixGenerator != null)
+                name.Prefix = PrefixGenerator.GetName();
+
+            if (FirstNameGenerator != null)
+                name.FirstName = FirstNameGenerator.GetName();
+
+            if (LastNameGenerator != null)
+                name.LastName = LastNameGenerator.GetName();
+
+            if (PostfixNameGenerator != null)
+                name.Postfix = PostfixNameGenerator.GetName();
+
+            if (LandNameGenerator != null)
+                name.Land = LandNameGenerator.GetName();
+
+            return name;
+        }
+
+        public FantasyNameGenerator()
+        {
+            _nameGenerators = new List<INameGenerator>();
+        }
+
+        public static FantasyNameGenerator FromSettingsInfo(SettingsInfo settingsInfo)
+        {
+            var fantasyNameGenerator = new FantasyNameGenerator();
+
+            fantasyNameGenerator.Gender = settingsInfo.Gender;
+
             // TODO: use type matching/strategy pattern here or whatever you wanna call it.
 
-	        compositeNameGenerator.Gender = this.Gender;
-			// No prefix included in version 1
-			//if(IncludePrefix)
-			//	compositeNameGenerator.PrefixGenerator = new PrefixGenerator();
-			
-			if(ChosenClass != Classes.None)
-			{
-			    INameGenerator maleNameGenerator = null;
+            // No prefix included in version 1
+            //if(IncludePrefix)
+            //	compositeNameGenerator.PrefixGenerator = new PrefixGenerator();
 
-				if(ChosenClass == Classes.Cleric )
+            if (settingsInfo.ChosenClass != Classes.None)
+            {
+                INameGenerator maleNameGenerator = null;
+
+                if (settingsInfo.ChosenClass == Classes.Cleric)
                     maleNameGenerator = new MaleClericFirstNameGenerator();
 
-                if (ChosenClass == Classes.Rogue )
+                if (settingsInfo.ChosenClass == Classes.Rogue)
                     maleNameGenerator = new MaleRogueFirstNameGenerator();
 
-                if (ChosenClass == Classes.Warrior )
+                if (settingsInfo.ChosenClass == Classes.Warrior)
                     maleNameGenerator = new MaleWarriorFirstNameGenerator();
 
-                if (ChosenClass == Classes.Wizard )
+                if (settingsInfo.ChosenClass == Classes.Wizard)
                     maleNameGenerator = new MaleWizardFirstNameGenerator();
-				
-                if(Gender == Gender.Male)
+
+                if (settingsInfo.Gender == Gender.Male)
                 {
-                    compositeNameGenerator.FirstNameGenerator = maleNameGenerator;
+                    fantasyNameGenerator.FirstNameGenerator = maleNameGenerator;
                 }
-			    else
-			    {
-			        compositeNameGenerator.FirstNameGenerator = new FemaleWrapperNameGenerator(maleNameGenerator);
-			    }
+                else
+                {
+                    fantasyNameGenerator.FirstNameGenerator = new FemaleWrapperNameGenerator(maleNameGenerator);
+                }
 
-			    compositeNameGenerator.LastNameGenerator = new LastNameGenerator();
-			}
-			else
-			{
-				compositeNameGenerator.FirstNameGenerator = new RaceNameGenerator((int)ChosenRace);
-				compositeNameGenerator.LastNameGenerator = new RaceNameGenerator((int)ChosenRace);
-			}
-            
+                fantasyNameGenerator.LastNameGenerator = new LastNameGenerator();
+            }
+            else
+            {
+                fantasyNameGenerator.FirstNameGenerator = new RaceNameGenerator(settingsInfo.ChosenRace);
+                fantasyNameGenerator.LastNameGenerator = new RaceNameGenerator(settingsInfo.ChosenRace);
+            }
 
-	        if(IncludePostfix)
-			{
-				if(ChosenClass == Classes.Wizard)
-					compositeNameGenerator.PostfixNameGenerator = new PostfixWizardGenerator();
-				else if(ChosenRace != Race.None)
-					compositeNameGenerator.PostfixNameGenerator = new VilePostfixGenerator();
-				else
-					compositeNameGenerator.PostfixNameGenerator = new PostfixGenerator();
-			}
-				
-			if(IncludeLands)
-				compositeNameGenerator.LandNameGenerator = new LandGenerator();
-			
-			FantasyName[] fantasyNames = new FantasyName[numNames];
-			
-			for(int i=0; i< numNames; i++)
-			{
-			    fantasyNames[i] = compositeNameGenerator.GetFantasyName();				
-			}
-			
-			return fantasyNames;
-		}
 
-        public static IFantasyNameGenerator FromSettingsInfo(SettingsInfo settingsInfo)
-	    {
-            return new FantasyNameGenerator(settingsInfo);
-	    }
-	}
+            if (settingsInfo.IncludePostfix)
+            {
+                if (settingsInfo.ChosenClass == Classes.Wizard)
+                    fantasyNameGenerator.PostfixNameGenerator = new PostfixWizardGenerator();
+                else if (settingsInfo.ChosenRace != Race.None)
+                    fantasyNameGenerator.PostfixNameGenerator = new VilePostfixGenerator();
+                else
+                    fantasyNameGenerator.PostfixNameGenerator = new PostfixGenerator();
+            }
+
+            if (settingsInfo.IncludeHomeland)
+                fantasyNameGenerator.LandNameGenerator = new LandGenerator();
+
+            return fantasyNameGenerator;
+        }
+
+        public FantasyName[] GetFantasyNames(int numNames)
+        {
+            if (numNames < 0)
+                throw new ArgumentException(string.Format("Number of fantasy names cannot be negative. [{0}", numNames));
+
+            FantasyName[] fantasyNames = new FantasyName[numNames];
+
+            for (int i = 0; i < numNames; i++)
+            {
+                fantasyNames[i] = this.GetFantasyName();
+            }
+
+            return fantasyNames;
+        }
+    }
 }

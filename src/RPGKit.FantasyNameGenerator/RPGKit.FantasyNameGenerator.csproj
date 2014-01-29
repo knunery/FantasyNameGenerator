@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Generators\Classes.cs" />
-    <Compile Include="Generators\CompositeGenerator.cs" />
+    <Compile Include="FantasyNameGenerator.cs" />
     <Compile Include="FantasyName.cs" />
     <Compile Include="Generators\FemaleWrapperNameGenerator.cs" />
     <Compile Include="Generators\Gender.cs" />
@@ -51,7 +51,6 @@
     <Compile Include="Generators\MaleRogueFirstNameGenerator.cs" />
     <Compile Include="Generators\MaleWarriorFirstNameGenerator.cs" />
     <Compile Include="Generators\MaleWizardFirstNameGenerator.cs" />
-    <Compile Include="FantasyNameGenerator.cs" />
     <Compile Include="IFantasyNameGenerator.cs" />
     <Compile Include="NameGenerator.cs" />
     <Compile Include="Generators\PostfixGenerator.cs" />
