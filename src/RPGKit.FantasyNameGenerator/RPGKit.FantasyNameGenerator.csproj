@@ -58,7 +58,7 @@
     <Compile Include="Generators\PrefixGenerator.cs" />
     <Compile Include="Generators\Race.cs" />
     <Compile Include="Generators\RaceNameGenerator.cs" />
-    <Compile Include="SettingsInfo.cs" />
+    <Compile Include="FantasyNameSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

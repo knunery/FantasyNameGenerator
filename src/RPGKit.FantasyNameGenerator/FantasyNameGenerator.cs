@@ -44,11 +44,11 @@ namespace RPGKit.FantasyNameGenerator
             _nameGenerators = new List<INameGenerator>();
         }
 
-        public static FantasyNameGenerator FromSettingsInfo(SettingsInfo settingsInfo)
+        public static FantasyNameGenerator FromSettingsInfo(FantasyNameSettings fantasyNameSettings)
         {
             var fantasyNameGenerator = new FantasyNameGenerator();
 
-            fantasyNameGenerator.Gender = settingsInfo.Gender;
+            fantasyNameGenerator.Gender = fantasyNameSettings.Gender;
 
             // TODO: use type matching/strategy pattern here or whatever you wanna call it.
 
@@ -56,23 +56,23 @@ namespace RPGKit.FantasyNameGenerator
             //if(IncludePrefix)
             //	compositeNameGenerator.PrefixGenerator = new PrefixGenerator();
 
-            if (settingsInfo.ChosenClass != Classes.None)
+            if (fantasyNameSettings.ChosenClass != Classes.None)
             {
                 INameGenerator maleNameGenerator = null;
 
-                if (settingsInfo.ChosenClass == Classes.Cleric)
+                if (fantasyNameSettings.ChosenClass == Classes.Cleric)
                     maleNameGenerator = new MaleClericFirstNameGenerator();
 
-                if (settingsInfo.ChosenClass == Classes.Rogue)
+                if (fantasyNameSettings.ChosenClass == Classes.Rogue)
                     maleNameGenerator = new MaleRogueFirstNameGenerator();
 
-                if (settingsInfo.ChosenClass == Classes.Warrior)
+                if (fantasyNameSettings.ChosenClass == Classes.Warrior)
                     maleNameGenerator = new MaleWarriorFirstNameGenerator();
 
-                if (settingsInfo.ChosenClass == Classes.Wizard)
+                if (fantasyNameSettings.ChosenClass == Classes.Wizard)
                     maleNameGenerator = new MaleWizardFirstNameGenerator();
 
-                if (settingsInfo.Gender == Gender.Male)
+                if (fantasyNameSettings.Gender == Gender.Male)
                 {
                     fantasyNameGenerator.FirstNameGenerator = maleNameGenerator;
                 }
@@ -85,22 +85,22 @@ namespace RPGKit.FantasyNameGenerator
             }
             else
             {
-                fantasyNameGenerator.FirstNameGenerator = new RaceNameGenerator(settingsInfo.ChosenRace);
-                fantasyNameGenerator.LastNameGenerator = new RaceNameGenerator(settingsInfo.ChosenRace);
+                fantasyNameGenerator.FirstNameGenerator = new RaceNameGenerator(fantasyNameSettings.ChosenRace);
+                fantasyNameGenerator.LastNameGenerator = new RaceNameGenerator(fantasyNameSettings.ChosenRace);
             }
 
 
-            if (settingsInfo.IncludePostfix)
+            if (fantasyNameSettings.IncludePostfix)
             {
-                if (settingsInfo.ChosenClass == Classes.Wizard)
+                if (fantasyNameSettings.ChosenClass == Classes.Wizard)
                     fantasyNameGenerator.PostfixNameGenerator = new PostfixWizardGenerator();
-                else if (settingsInfo.ChosenRace != Race.None)
+                else if (fantasyNameSettings.ChosenRace != Race.None)
                     fantasyNameGenerator.PostfixNameGenerator = new VilePostfixGenerator();
                 else
                     fantasyNameGenerator.PostfixNameGenerator = new PostfixGenerator();
             }
 
-            if (settingsInfo.IncludeHomeland)
+            if (fantasyNameSettings.IncludeHomeland)
                 fantasyNameGenerator.LandNameGenerator = new LandGenerator();
 
             return fantasyNameGenerator;

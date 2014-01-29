@@ -12,7 +12,7 @@ namespace RPGKit.FantasyNameGenerator.Tests
         {
             // arrange
             NameGenerator.GetRandomNumber = (maxValue) => 1;
-            IFantasyNameGenerator fantasyNameGenerator = FantasyNameGenerator.FromSettingsInfo(new SettingsInfo(Classes.Warrior, Race.None, true, true, Gender.Male));
+            IFantasyNameGenerator fantasyNameGenerator = FantasyNameGenerator.FromSettingsInfo(new FantasyNameSettings(Classes.Warrior, Race.None, true, true, Gender.Male));
 
             // act
             var names = fantasyNameGenerator.GetFantasyNames(2);
@@ -27,7 +27,7 @@ namespace RPGKit.FantasyNameGenerator.Tests
         {
             // arrange
             NameGenerator.GetRandomNumber = (maxValue) => 0;
-            IFantasyNameGenerator fantasyNameGenerator = FantasyNameGenerator.FromSettingsInfo(new SettingsInfo(Classes.Warrior, Race.None, true, true, Gender.Female));
+            IFantasyNameGenerator fantasyNameGenerator = FantasyNameGenerator.FromSettingsInfo(new FantasyNameSettings(Classes.Warrior, Race.None, true, true, Gender.Female));
 
             // act
             var names = fantasyNameGenerator.GetFantasyNames(1);
@@ -42,7 +42,7 @@ namespace RPGKit.FantasyNameGenerator.Tests
         {
             // arrange
             NameGenerator.GetRandomNumber = (maxValue) => 1;
-            IFantasyNameGenerator fantasyNameGenerator = FantasyNameGenerator.FromSettingsInfo(new SettingsInfo(Classes.Warrior, Race.Goblin, true, true, Gender.Female));
+            IFantasyNameGenerator fantasyNameGenerator = FantasyNameGenerator.FromSettingsInfo(new FantasyNameSettings(Classes.Warrior, Race.Goblin, true, true, Gender.Female));
 
             // act
             var names = fantasyNameGenerator.GetFantasyNames(2);
