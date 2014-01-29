@@ -11,5 +11,6 @@ How to use?
 Here is how you would get 10 random male warrior fantasy names.
 
 
-    NameFactory nameFactory = new NameFactory(new SettingsInfo(Classes.Warrior, Race.None, true, true, GenderEnum.Male));
-    var names = nameFactory.GetFantasyNames(10);
+    var fantasyNameSettings = new FantasyNameSettings(Classes.Warrior,Race.None, true, true, Gender.Male);
+    IFantasyNameGenerator fantasyNameGenerator = FantasyNameGenerator.FromSettingsInfo( fantasyNameSettings );
+    FantasyName[] names = fantasyNameGenerator.GetFantasyNames(10);
