@@ -1,6 +1,6 @@
-namespace RPGKit.FantasyNameGenerator
+namespace RPGKit.FantasyNameGenerator.Generators
 {
-	public class VilePostfixGenerator : NameGenerator, INameGenerator
+	public class VilePostfixGenerator : NameGenerator
 	{
 		private string[] _namePostfixes;
 		
@@ -9,14 +9,14 @@ namespace RPGKit.FantasyNameGenerator
 			_namePostfixes = new string[] { "Unholy", "Crazed", "Terrible", "Cruel", "Gruesome", "Boneless", "Gnarled", "Broken", "Underhanded", "Scalper", "Tormented"};				
 		}
 
-		public string GetName ()
+		public override string GetName ()
 		{
 			return "the " + GetRandomElement (_namePostfixes);
 		}		
 	}
 	
 
-	public class PostfixGenerator : NameGenerator, INameGenerator
+	public class PostfixGenerator : NameGenerator
 	{
 		private string[] _namePostfixes;
 		
@@ -28,7 +28,7 @@ namespace RPGKit.FantasyNameGenerator
 		"the Great King", "the Restless", "the Peaceful", "the Traveled", "the Deposed" };				
 		}
 
-		public string GetName ()
+		public override string GetName ()
 		{
 			return GetRandomElement (_namePostfixes);
 		}

@@ -1,25 +1,32 @@
-﻿using RPGKit.FantasyNameGenerator;
-using RPGKit.FantasyNameGenerator.Generators;
+﻿using RPGKit.FantasyNameGenerator.Generators;
 
-public class SettingsInfo
+namespace RPGKit.FantasyNameGenerator
 {
-    public Classes ChosenClass { get; set; }
-    public Race ChosenRace { get; set; }
-    public bool IncludeHomeland { get; set; }
-    public bool IncludePostfix { get; set; }
-    public GenderEnum Gender { get; set; }
-
-    public SettingsInfo(Classes chosenclass, Race race, bool includeHomeland, bool includePostfix, GenderEnum gender)
+    public class SettingsInfo
     {
-        ChosenClass = chosenclass;
-        ChosenRace = race;
-        IncludeHomeland = includeHomeland;
-        IncludePostfix = includePostfix;
-        Gender = gender;
-    }
+        public Classes ChosenClass { get; set; }
+        public Race ChosenRace { get; set; }
+        public bool IncludeHomeland { get; set; }
+        public bool IncludePostfix { get; set; }
+        public Gender Gender { get; set; }
 
-    public override string ToString()
-    {
-        return string.Format("[SettingsInfo: ChosenClass={0}, ChosenRace={1}, IncludeHomeland={2}, IncludePostfix={3}, Gender={4}]", ChosenClass, ChosenRace, IncludeHomeland, IncludePostfix, Gender);
+        public SettingsInfo(Classes chosenclass, Race race, bool includeHomeland, bool includePostfix, Gender gender)
+        {
+            ChosenClass = chosenclass;
+            ChosenRace = race;
+            IncludeHomeland = includeHomeland;
+            IncludePostfix = includePostfix;
+            Gender = gender;
+        }
+
+        public static SettingsInfo DefaultSettings()
+        {
+            return new SettingsInfo(Classes.Warrior, Race.None, true, true, Gender.Male);
+        }
+
+        public override string ToString()
+        {
+            return string.Format("[SettingsInfo: ChosenClass={0}, ChosenRace={1}, IncludeHomeland={2}, IncludePostfix={3}, Gender={4}]", ChosenClass, ChosenRace, IncludeHomeland, IncludePostfix, Gender);
+        }
     }
 }

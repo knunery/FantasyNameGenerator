@@ -1,6 +1,8 @@
-﻿namespace RPGKit.FantasyNameGenerator
+﻿using RPGKit.FantasyNameGenerator.Generators;
+
+namespace RPGKit.FantasyNameGenerator
 {
-    public class FemaleWrapperNameGenerator : NameGenerator, INameGenerator
+    public class FemaleWrapperNameGenerator : NameGenerator
     {
         public static string[] femaleNameEndings = new string[]{"llyn", "a", "in", "lene", "endra", "rin", "iana", "andra", "ia"};
 
@@ -11,7 +13,7 @@
             _innerGenerator = innerGenerator;
         }
 
-        public string GetName()
+        public override string GetName()
         {
             string name = _innerGenerator.GetName();
 

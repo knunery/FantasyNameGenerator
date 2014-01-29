@@ -43,8 +43,7 @@
     <Compile Include="Generators\CompositeGenerator.cs" />
     <Compile Include="FantasyName.cs" />
     <Compile Include="Generators\FemaleWrapperNameGenerator.cs" />
-    <Compile Include="Generators\GenderEnum.cs" />
-    <Compile Include="Generators\INameFactory.cs" />
+    <Compile Include="Generators\Gender.cs" />
     <Compile Include="Generators\INameGenerator.cs" />
     <Compile Include="Generators\LandGenerator.cs" />
     <Compile Include="Generators\LastNameGenerator.cs" />
@@ -52,12 +51,13 @@
     <Compile Include="Generators\MaleRogueFirstNameGenerator.cs" />
     <Compile Include="Generators\MaleWarriorFirstNameGenerator.cs" />
     <Compile Include="Generators\MaleWizardFirstNameGenerator.cs" />
-    <Compile Include="NameFactory.cs" />
+    <Compile Include="FantasyNameGenerator.cs" />
+    <Compile Include="IFantasyNameGenerator.cs" />
     <Compile Include="NameGenerator.cs" />
     <Compile Include="Generators\PostfixGenerator.cs" />
     <Compile Include="Generators\PostfixWizardGenerator.cs" />
     <Compile Include="Generators\PrefixGenerator.cs" />
-    <Compile Include="Generators\RaceEnum.cs" />
+    <Compile Include="Generators\Race.cs" />
     <Compile Include="Generators\RaceNameGenerator.cs" />
     <Compile Include="SettingsInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,13 +1,12 @@
 using System.Collections.Generic;
-using RPGKit.FantasyNameGenerator.Generators;
 
-namespace RPGKit.FantasyNameGenerator
+namespace RPGKit.FantasyNameGenerator.Generators
 {
     public class CompositeNameGenerator : INameGenerator
     {
         private List<INameGenerator> _nameGenerators;
 
-        public GenderEnum Gender { get; set; }
+        public Gender Gender { get; set; }
         public INameGenerator PrefixGenerator { get; set; }
         public INameGenerator FirstNameGenerator { get; set; }
         public INameGenerator LastNameGenerator { get; set; }
@@ -51,7 +50,7 @@ namespace RPGKit.FantasyNameGenerator
         }
         #endregion
 
-        public CompositeNameGenerator(GenderEnum gender, List<INameGenerator> nameGenerators)
+        public CompositeNameGenerator(Gender gender, List<INameGenerator> nameGenerators)
         {
             this.Gender = gender;
             _nameGenerators = nameGenerators;

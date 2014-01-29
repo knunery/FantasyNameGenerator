@@ -4,18 +4,20 @@ using RPGKit.FantasyNameGenerator.Generators;
 
 namespace RPGKit.FantasyNameGenerator.Tests
 {
-    class FantasyNameGenerator_Tests
+    public class FantasyNameGenerator_Tests
     {
         [Test]
         [UseReporter(typeof(DiffReporter))]
         public void Male_Warrior()
         {
+            // arrange
             NameGenerator.GetRandomNumber = (maxValue) => 1;
+            IFantasyNameGenerator fantasyNameGenerator = FantasyNameGenerator.FromSettingsInfo(new SettingsInfo(Classes.Warrior, Race.None, true, true, Gender.Male));
 
-            NameFactory nameFactory = new NameFactory(new SettingsInfo(Classes.Warrior, Race.None, true, true, GenderEnum.Male));
+            // act
+            var names = fantasyNameGenerator.GetFantasyNames(2);
 
-            var names = nameFactory.GetFantasyNames(2);
-
+            // assert
             ApprovalTests.Approvals.VerifyAll("Male Warrior Names", names, "names");
         }
 
@@ -23,11 +25,14 @@ namespace RPGKit.FantasyNameGenerator.Tests
         [UseReporter(typeof(DiffReporter))]
         public void Female_Goblin_Warrior()
         {
+            // arrange
             NameGenerator.GetRandomNumber = (maxValue) => 1;
-            NameFactory nameFactory = new NameFactory(new SettingsInfo(Classes.Warrior, Race.Goblin, true, true, GenderEnum.Female));
+            IFantasyNameGenerator fantasyNameGenerator = FantasyNameGenerator.FromSettingsInfo(new SettingsInfo(Classes.Warrior, Race.Goblin, true, true, Gender.Female));
 
-            var names = nameFactory.GetFantasyNames(2);
+            // act
+            var names = fantasyNameGenerator.GetFantasyNames(2);
 
+            // assert
             ApprovalTests.Approvals.VerifyAll("Female Goblin Names", names, "names");
         }
     }

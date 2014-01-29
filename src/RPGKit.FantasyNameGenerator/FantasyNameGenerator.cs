@@ -3,25 +3,25 @@ using RPGKit.FantasyNameGenerator.Generators;
 
 namespace RPGKit.FantasyNameGenerator
 {
-	public class NameFactory : INameFactory
+	public class FantasyNameGenerator : IFantasyNameGenerator
 	{	
 		public Classes ChosenClass { get; set; }
 		public Race ChosenRace { get; set; }
 		public bool IncludePrefix { get; set; }
 		public bool IncludePostfix { get; set; }
 		public bool IncludeLands { get; set; }
-        public GenderEnum Gender { get; set; }
+        public Gender Gender { get; set; }
 
-		public NameFactory ()
+		private FantasyNameGenerator ()
 		{
 			ChosenClass = Classes.Warrior;
 			ChosenRace = Race.None;
 			IncludePostfix = true;
 			IncludeLands = true;
-            Gender = GenderEnum.Male;
+            Gender = Gender.Male;
 		}
 		
-		public NameFactory(SettingsInfo settingsInfo)
+		private FantasyNameGenerator(SettingsInfo settingsInfo)
 		{
 			ChosenClass = settingsInfo.ChosenClass;
 			ChosenRace = settingsInfo.ChosenRace;
@@ -65,7 +65,7 @@ namespace RPGKit.FantasyNameGenerator
                 if (ChosenClass == Classes.Wizard )
                     maleNameGenerator = new MaleWizardFirstNameGenerator();
 				
-                if(Gender == GenderEnum.Male)
+                if(Gender == Gender.Male)
                 {
                     compositeNameGenerator.FirstNameGenerator = maleNameGenerator;
                 }
@@ -105,7 +105,10 @@ namespace RPGKit.FantasyNameGenerator
 			
 			return fantasyNames;
 		}
-		
-		
+
+        public static IFantasyNameGenerator FromSettingsInfo(SettingsInfo settingsInfo)
+	    {
+            return new FantasyNameGenerator(settingsInfo);
+	    }
 	}
 }

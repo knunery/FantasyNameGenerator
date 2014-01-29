@@ -1,6 +1,6 @@
 namespace RPGKit.FantasyNameGenerator.Generators
 {
-    public enum GenderEnum
+    public enum Gender
     {
         Male,
         Female

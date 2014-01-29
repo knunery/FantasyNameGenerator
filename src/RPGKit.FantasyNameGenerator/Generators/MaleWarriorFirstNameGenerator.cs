@@ -1,6 +1,6 @@
-namespace RPGKit.FantasyNameGenerator
+namespace RPGKit.FantasyNameGenerator.Generators
 {
-	public class MaleWarriorFirstNameGenerator : NameGenerator, INameGenerator
+	public class MaleWarriorFirstNameGenerator : NameGenerator
 	{
 		public static string[] Warrior_FirstNames = new string[] { "Brax", "Sole", "Ajax", "Jquery", "Orpheus", "Bane", "Crayton", "Guurgle", "Norax", "Krag",
 		"Gwargong", "Kabar", "Klaver", "Demonstrus", "Krag", "Krashnor", "Strider", "Askold", "Gorm", "Harald",
@@ -12,7 +12,7 @@ namespace RPGKit.FantasyNameGenerator
 		"Con", "Wolf", "Zar", "Zer", "War", "Nar", "Thay" };
 		public static string[] Warrior_FirstNamesPart2 = new string[] { "nstrus", "x", "lax", "ndor", "ton", "seus", "zzt", "borne", "nan", "run" };
 
-		public string GetName ()
+		public override string GetName ()
 		{
 			if (GetWeight () < 35)
 				return GetRandomElement (Warrior_FirstNames);

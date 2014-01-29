@@ -5,7 +5,7 @@ namespace RPGKit.FantasyNameGenerator
 {
     public class FantasyName
 	{
-        public GenderEnum Gender { get; set; }
+        public Gender Gender { get; set; }
 		public String Prefix { get; set; }
 		public String FirstName { get; set; }
 		public String LastName { get; set; }

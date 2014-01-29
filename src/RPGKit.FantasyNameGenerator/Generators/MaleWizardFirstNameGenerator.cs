@@ -1,6 +1,6 @@
-namespace RPGKit.FantasyNameGenerator
+namespace RPGKit.FantasyNameGenerator.Generators
 {
-	public class MaleWizardFirstNameGenerator : NameGenerator, INameGenerator
+	public class MaleWizardFirstNameGenerator : NameGenerator
 	{
 		public static string[] Wizard_FirstNames = new string[] { "Voltar", "Vultrax", "Frizban", "Rasputin", "Rostor", "Simonexto", "Guurglex" };
 
@@ -8,8 +8,7 @@ namespace RPGKit.FantasyNameGenerator
 		"Dall", "Dell", "Mil", "Ward" };
 		public static string[] Wizard_FirstNamesPart2 = new string[] { "bald", "ban", "buck", "tor", "van", "gax", "trandor", "thuri", "ben", "baldar", "may", "lam", "mor", "dard", "burg", "whit" };
 		
-		#region INameGenerator implementation
-		public string GetName ()
+		public override string GetName ()
 		{
 			int weight = GetWeight();
 			if(weight<15)
@@ -17,7 +16,6 @@ namespace RPGKit.FantasyNameGenerator
 			else
 				return GetRandomElement (Wizard_FirstNamesPart1) + GetRandomElement (Wizard_FirstNamesPart2);
 		}
-		#endregion
 
 	}
 }

@@ -1,4 +1,4 @@
-namespace RPGKit.FantasyNameGenerator
+namespace RPGKit.FantasyNameGenerator.Generators
 {
 	public enum Race
 	{

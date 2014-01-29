@@ -1,8 +1,9 @@
 using System;
+using RPGKit.FantasyNameGenerator.Generators;
 
 namespace RPGKit.FantasyNameGenerator
 {
-    public abstract class NameGenerator
+    public abstract class NameGenerator : INameGenerator
     {
         private static readonly Random _random = new Random();
 
@@ -18,5 +19,7 @@ namespace RPGKit.FantasyNameGenerator
 		{
 		    return GetRandomNumber(100);		
 		}
-	}
+
+        public abstract string GetName();
+    }
 }
